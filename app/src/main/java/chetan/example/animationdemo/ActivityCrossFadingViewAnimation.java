@@ -27,7 +27,14 @@ public class ActivityCrossFadingViewAnimation extends AppCompatActivity
         mShowImage = ( ImageView )findViewById( R.id.show_image );
         mProgressBar = ( ProgressBar )findViewById( R.id.progress_loading );
         mShowImage.setVisibility( View.GONE );
-        mShortAnimTime = getResources().getInteger( android.R.integer.config_mediumAnimTime );
+        mShortAnimTime = 3000;
+                //getResources().getInteger( android.R.integer.config_longAnimTime );
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        CrossFadeAnimation();
     }
 
     private void CrossFadeAnimation()
