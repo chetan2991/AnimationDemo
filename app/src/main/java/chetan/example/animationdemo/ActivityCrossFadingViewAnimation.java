@@ -39,14 +39,21 @@ public class ActivityCrossFadingViewAnimation extends AppCompatActivity
 
     private void CrossFadeAnimation()
     {
+        // Set the image view to 0% opacity but visible, so that it is visible
+        // (but fully transparent) during the animation.
         mShowImage.setAlpha(0f);
         mShowImage.setVisibility( View.VISIBLE );
 
+        // Animate the content view to 100% opacity, and clear any animation
+        // listener set on the view.
         mShowImage.animate()
                   .alpha(1f)
                   .setDuration( mShortAnimTime )
                   .setListener( null );
 
+        // Animate the loading view to 0% opacity. After the animation ends,
+        // set its visibility to GONE as an optimization step (it won't
+        // participate in layout passes, etc.)
         mProgressBar.animate()
                     .alpha(0f)
                     .setDuration( mShortAnimTime )
